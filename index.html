@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="./img/favicon.jpg" type="image/x-icon" />
+    <link rel="stylesheet" href="css/style.css">
+    <script src="https://unpkg.com/vue@next"></script>
+    <title>Pokedex</title>
+</head>
+
+<body class="wrapper">
+    <main>
+        <div id="app">
+            <div class="top">
+                <h1>Pokedex</h1>
+            </div>
+            <div class="top form-style" id="form">
+                <input type="text" v-model="query">
+                <button v-on:click="search">Search</button>
+            </div>
+
+            <ul v-if="filtered.length > 0">
+                <li class="cards" v-for="pokemon in filtered">
+                    {{ pokemon.name }}
+                    <img v-bind:src="pokemon.image" alt="Pokemon" title="Pokemon">
+                </li>
+            </ul>
+            <ul v-if="filtered.length < 1">
+                <li class="cards" v-for="pokemon in pokemons">
+                    {{ pokemon.name }}
+                    <img v-bind:src="pokemon.image" alt="Pokemon" title="Pokemon">
+                </li>
+            </ul>
+        </div>
+    </main>
+    <script src="./app.js"></script>
+</body>
+
+</html>
